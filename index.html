@@ -5,27 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/css/style.css">
-    <title>Calculadora | Média</title>
+    <title>Agenda | Telefónica</title>
 </head>
 <body>
     <div class="container">
         <header>
             <img src="./src/images/logo.png" alt="Capelo e Diploma">
-            <h1>Calculadora Dinâmica</h1>
+            <h1>Agenda Telefônica</h1>
     
         </header>
-        <form action="" id="form-atividade">
-            <input type="text" required placeholder="nome da atividade" id="nome-atividade">
-            <input type="number" required placeholder="Nota da atividade" min="0" max="10" id="nota-atividade">
-            <button type="submit">Adiciona +</button>
+        <form action="" id="form-contato">
+            <input type="text" required placeholder="Digite o nome" id="nome-contato">
+            <input type="text" required placeholder="Digite o número" id="numero-contato">
+            <button type="submit">Salvar contato +</button>
         </form>
     
         <table cellspacing="0">
             <thead>
                 <tr>
-                    <th>Nome da atividade</th>
-                    <th>Nota da atividade</th>
-                    <th>aprovado</th>
+                    <th>Nome</th>
+                    <th>Número</th>
+                    <th>📞</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,9 +37,9 @@
     
                 <tfoot>
                     <tr>
-                        <td>Média final</td>
-                        <td id="media-final-valor">---</td>
-                        <td id="media-final-resultado"><span class="aprovado">Aprovado</span></td>
+                        <td></td>
+                        <td id="media-final-valor"></td>
+                        <td id="valido-invalido"><span class="aprovado">Contatos</span></td>
                       
                     </tr>
                 </tfoot>

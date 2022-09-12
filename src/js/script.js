@@ -1,17 +1,15 @@
-const form = document.getElementById('form-atividade');
-// const imgAprovado = '<img src="../images/aprovado.png" alt="celebrando" />';
-// const imgReprovado = '<img src="../images/reprovado.png" alt="triste" />';
-const myEmojiA = `<p style="font-size: 30px;">&#129395;</p>`
-const myEmojiB = `<p style="font-size: 30px;">&#128532;</p>`
+const form = document.getElementById('form-contato');
 
-const atividades = [];
-const notas = []
+const myEmojiA = `<p style="font-size: 30px;">&#128212;</p>`
 
-const spanAprovado = '<span class="resultado aprovado">Aprovado</span>'
-const spanReprovado = '<span class="resultado reprovado">Reprovado</span>'
+ 
 
 
-const notaMinima = parseFloat(prompt('Digite a nota mínima:'))
+const nomes = [];
+const numero = []
+
+
+const valorCampoContato = document.getElementById('numero-contato')
 
 let linhas = '';
 
@@ -19,34 +17,37 @@ let linhas = '';
 form.addEventListener('submit', function(e) {
 e.preventDefault();
 
-
-
 adicionaLinha()
 atualizaTabela()
-atualizaMediaFinal()
+
 
 })
 
 
+
+
 const adicionaLinha = () => {
 
-    const inputNomeAtividade = document.getElementById('nome-atividade')
-    const inputNota = document.getElementById('nota-atividade')
+    const inputNomeContato = document.getElementById('nome-contato')
+    const inputNumeroContato = document.getElementById('numero-contato')
 
-if(atividades.includes(inputNomeAtividade.value)) {
+if(nomes.includes(inputNomeContato.value)) {
 
-    alert(`A atividade ${inputNomeAtividade.value} já foi inserida`)
+    alert(`O contato ${inputNomeContato.value} já foi inserido`)
 }
- else {
+else if (numero.includes(inputNumeroContato.value)) {
+    alert(`O número ${inputNumeroContato.value} já foi inserido`)
 
-    atividades.push(inputNomeAtividade.value);
-    notas.push(parseFloat(inputNota.value));
+} else {
+
+    nomes.push(inputNomeContato.value);
+    numero.push(inputNumeroContato.value);
 
     let linha = '<tr>'
 
-    linha += `<td>${inputNomeAtividade.value}</td>`
-    linha += `<td>${inputNota.value}</td>`
-    linha += `<td>${inputNota.value >= notaMinima ? myEmojiA : myEmojiB}</td>`
+    linha += `<td>${inputNomeContato.value}</td>`
+    linha += `<td>${inputNumeroContato.value}</td>`
+    linha += `<td>${inputNumeroContato.value >= 1 ? myEmojiA : 'Campo do número inválido'}</td>`
     linha += '</tr>'
 
     linhas += linha
@@ -54,8 +55,8 @@ if(atividades.includes(inputNomeAtividade.value)) {
 }
 
 
-inputNomeAtividade.value = ''
-inputNota.value = ''
+inputNomeContato.value = ''
+inputNumeroContato.value = ''
 
 }
 
@@ -67,34 +68,5 @@ const corpoTabela = document.querySelector('tbody');
 corpoTabela.innerHTML = linhas
 
 
-
-}
-
-
-function atualizaMediaFinal() {
-    
-    const mediaFinal = calculaMedia();
-
-    document.getElementById('media-final-valor')
-    .innerHTML = mediaFinal.toFixed(2)
-
-    document.getElementById('media-final-resultado')
-    .innerHTML = mediaFinal >= notaMinima ? spanAprovado : spanReprovado;
-
-}
-
-
-function calculaMedia() {
-
- 
-    let somaDasNotas = 0;
-
-    for(let i = 0; i < notas.length; i++) {
-
-        somaDasNotas += notas[i];
-
-    }
-
-    return somaDasNotas / notas.length
 
 }
